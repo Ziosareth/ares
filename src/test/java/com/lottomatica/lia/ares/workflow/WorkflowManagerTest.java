@@ -8,7 +8,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
@@ -49,14 +48,5 @@ class WorkflowManagerTest {
                 .expectNext(stepResponse.body())
                 .expectComplete()
                 .verify();
-    }
-
-
-    @Test
-    void lol(){
-        Flux<Integer> flux = Flux.range(0, 100).doOnNext(System.out::println);
-        Mono<String> lol = Mono.just("abc").doOnNext(System.out::println);
-        Mono<Void> then = Mono.when(lol,flux).then();
-        StepVerifier.create(then).expectSubscription().verifyComplete();
     }
 }
