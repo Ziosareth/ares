@@ -8,38 +8,11 @@
         <version>3.1.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.lottomatica.lia</groupId>
+    <groupId>it.ziosareth</groupId>
     <artifactId>ares</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>ares</name>
     <description>ares</description>
-    <properties>
-        <java.version>17</java.version>
-        <docker.registry>805259545383.dkr.ecr.us-east-1.amazonaws.com</docker.registry>
-        <lia-base.version>0.0.2</lia-base.version>
-        <jib.skip>false</jib.skip>
-        <gitflow-maven-plugin.version>1.18.0</gitflow-maven-plugin.version>
-        <spring-boot-admin.version>2.7.7</spring-boot-admin.version>
-        <grpc-spring-boot-starter.version>4.9.1</grpc-spring-boot-starter.version>
-        <grpc.version>1.49.1</grpc.version>
-    </properties>
-    <distributionManagement>
-        <repository>
-            <id>gaming</id>
-            <url>https://pkgs.dev.azure.com/ltm-international/Gaming/_packaging/gaming/maven/v1</url>
-        </repository>
-        <snapshotRepository>
-            <id>gaming</id>
-            <url>https://pkgs.dev.azure.com/ltm-international/Gaming/_packaging/gaming/maven/v1</url>
-        </snapshotRepository>
-    </distributionManagement>
-    <repositories>
-        <repository>
-            <id>gaming</id>
-            <name>Maven Repository Azure Devops</name>
-            <url>https://pkgs.dev.azure.com/ltm-international/Gaming/_packaging/gaming/maven/v1</url>
-        </repository>
-    </repositories>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -94,40 +67,6 @@
             <plugin>
                 <groupId>org.graalvm.buildtools</groupId>
                 <artifactId>native-maven-plugin</artifactId>
-            </plugin>
-            <!-- Git Flow management with maven -->
-            <plugin>
-                <groupId>com.amashchenko.maven.plugin</groupId>
-                <artifactId>gitflow-maven-plugin</artifactId>
-                <version>${gitflow-maven-plugin.version}</version>
-                <configuration>
-                    <gitFlowConfig>
-                        <productionBranch>main</productionBranch>
-                    </gitFlowConfig>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>com.google.cloud.tools</groupId>
-                <artifactId>jib-maven-plugin</artifactId>
-                <version>3.3.0</version>
-                <configuration>
-                    <from>
-                        <image>${docker.registry}/lottomatica/gaming/lia/lia-base:${lia-base.version}</image>
-                    </from>
-                    <to>
-                        <image>${docker.registry}/lottomatica/gaming/lia/${project.artifactId}:${project.version}</image>
-                    </to>
-                    <skip>${jib.skip}</skip>
-                    <container>
-                        <creationTime>USE_CURRENT_TIMESTAMP</creationTime>
-                        <environment>
-                            <NEW_RELIC_APP_NAME>lottomatica/lia/${project.artifactId}</NEW_RELIC_APP_NAME>
-                        </environment>
-                        <jvmFlags>
-                            -javaagent:/opt/newrelic/newrelic.jar
-                        </jvmFlags>
-                    </container>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
