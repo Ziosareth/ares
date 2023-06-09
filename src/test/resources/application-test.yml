@@ -1,0 +1,24 @@
+ares:
+  workflows:
+    payout:
+      init-step:
+        init
+      steps:
+        init:
+          endpoint: http://127.0.0.1:8080
+          method: POST
+          next: step1
+          error: end
+        step1:
+          endpoint: http://127.0.0.1:8080
+          method: GET
+          next: step2
+          error: end
+        step2:
+          endpoint: http://127.0.0.1:8080
+          method: POST
+          request-body: step1
+          next: end
+          error: end
+      end:
+        return-value: step1

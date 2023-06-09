@@ -1,0 +1,26 @@
+server:
+  port: ${SERVER_PORT:8170}
+spring:
+  application:
+    name: ares
+  webflux:
+    base-path: /ares
+
+ares:
+  workflows:
+    payout:
+      init-step:
+        init
+      steps:
+        init:
+          endpoint: http://127.0.0.1:8080
+          method: POST
+          next: step1
+        step1:
+          endpoint: http://127.0.0.1:8080
+          method: GET
+          next: step2
+        step2:
+          endpoint: http://127.0.0.1:8080
+          method: POST
+          next:
