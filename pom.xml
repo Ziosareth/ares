@@ -55,12 +55,6 @@
             <version>2.14.0</version>
             <scope>test</scope>
         </dependency>
-        <!--SPRING ADMIN-->
-        <dependency>
-            <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-starter-client</artifactId>
-            <version>${spring-boot-admin.version}</version>
-        </dependency>
     </dependencies>
     <build>
         <plugins>
