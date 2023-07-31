@@ -21,7 +21,7 @@ public class AresGateway implements IAresGateway {
     public Mono<String> exchange(String method, String url, String requestBody) {
         HttpMethod httpMethod = HttpMethod.valueOf(method);
         return webClient.method(httpMethod)
-                .uri(URI.create(url))
+                .uri(url)
                 .body(BodyInserters.fromValue(requestBody))
                 .exchangeToMono(clientResponse -> clientResponse.bodyToMono(String.class));
     }
